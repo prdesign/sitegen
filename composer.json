@@ -1,0 +1,31 @@
+{
+    "name": "prdesign/sitegen",
+    "description": "Wizard extension to build out pages on a new website quickly",
+    "type": "wizard",
+    "require": {
+        "laravel/framework": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "PRDesign\\SiteGen\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PRDesign\\SiteGen\\SiteGenServiceProvider"
+            ],
+            "aliases": {
+                "SiteGen": "PRDesign\\SiteGen\\SiteGenFacade"
+            }
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Craig",
+            "email": "rcraig12@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
