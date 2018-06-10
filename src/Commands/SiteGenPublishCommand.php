@@ -39,14 +39,14 @@ class SiteGenPublishCommand extends Command
     public function handle(Filesystem $filesystem)
     {
         $this->info('Creating an additional database connector in config/database.php');
+
         $database_config = $filesystem->get(base_path('config/database.php'));
+
         if (false === strpos($database_config, "'mysql_sitegen'")) {
 
             $config_array = explode( PHP_EOL , $database_config );
 
             $write_flag = false;
-
-            //dd($config_array);
 
             foreach( $config_array as $row ){
 
