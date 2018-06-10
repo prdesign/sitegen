@@ -8,6 +8,16 @@ use App\Http\Controllers\Controller;
 class SiteGenFormBuilderController extends Controller
 {
     public function index(){
-        return view('sitegen::formbuilder.index');
+
+        $formData = [
+            [
+                'position' => 0,
+                'name' => 'username',
+                'type' => 'input',
+                'class' => 'txtInput',
+            ]
+        ];
+
+        return view('sitegen::formbuilder.index' , [ 'formData' => $formData ]);
     }
 }
