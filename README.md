@@ -8,13 +8,9 @@ Run the Composer require command from the terminal:
 
     composer require prdesign/sitegen
 
-Additionally you will have to publish the assets from within the package to your application.
+Additionally you will have to run the package installer which will setup config files and publish assets.
 
-    php artisan vendor:publish --provider=PRDesign\SiteGen\SiteGenServiceProvider
-
-    if you have to run this again then add the --force switch
-
-        php artisan vendor:publish --force --provider=PRDesign\SiteGen\SiteGenServiceProvider
+    php artisan sitegen:install
 
 If you are using Laravel 5.5, this is all there is to do.
 
