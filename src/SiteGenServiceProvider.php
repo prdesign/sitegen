@@ -19,9 +19,16 @@ class SiteGenServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/resources/views' , 'sitegen' );
 
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\SiteGenPublishCommand::class,
+            ]);
+        }
+
         $this->publishes([
             __DIR__.'/config/SiteGen.php' => config_path('SiteGen.php'),
-            __DIR__.'/config/database.php' => config_path('database.php')
         ]);
 
         $this->publishes([
@@ -47,5 +54,6 @@ class SiteGenServiceProvider extends ServiceProvider
             $loader->alias( 'SiteGen' , SiteGenFacade::class );
 
         });
+
     }
 }

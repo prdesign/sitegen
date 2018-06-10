@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="flex-bottom">
-      <div class="left-panel"></div>
+      <div class="left-panel">
+
+      </div>
       <div class="right-panel">
         <div class="div-block">
           <h4 class="left-panel-menu-title">Form Objects</h4>
