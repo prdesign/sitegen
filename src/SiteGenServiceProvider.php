@@ -5,6 +5,7 @@ namespace PRDesign\SiteGen;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use PRDesign\SiteGen\SiteGenFacade;
+use Illuminate\Support\Facades\Blade;
 
 class SiteGenServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,9 @@ class SiteGenServiceProvider extends ServiceProvider
             __DIR__.'/assets' => public_path('/'),
         ], 'public' );
 
+        Blade::directive('GenSiteForm', function ($expression) {
+                return "<?php echo 'This is a form called '.$expression; ?>";
+        });
 
     }
 
@@ -54,6 +58,8 @@ class SiteGenServiceProvider extends ServiceProvider
             $loader->alias( 'SiteGen' , SiteGenFacade::class );
 
         });
+
+        
 
     }
 }
