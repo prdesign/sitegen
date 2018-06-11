@@ -4,6 +4,7 @@ namespace PRDesign\SiteGen\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use PRDesign\SiteGen\SiteGenServiceProvider;
 
 class SiteGenPublishCommand extends Command
 {
@@ -38,6 +39,9 @@ class SiteGenPublishCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
+        $this->info('Publishing SiteGen assets (Using Force):-');
+        $this->call('vendor:publish', [ '--force' => true, '--provider' => SiteGenServiceProvider::class ] );
+
         $this->info('Creating an additional database connector in config/database.php');
 
         $database_config = $filesystem->get(base_path('config/database.php'));
@@ -92,14 +96,70 @@ class SiteGenPublishCommand extends Command
             $filesystem->copy(base_path('config/database_tmp.php'),base_path('config/database.php'));
             $filesystem->delete(base_path('config/database_tmp.php'));
 
+            $this->info('config/database.php file updated succesfully!');
+
         } else {
 
-            $this->info('Database configuration file already configured!');
+            $this->info('config/database.php file already configured!');
 
         }
 
-        $this->info('Publishing SiteGen assets (Using Force):-');
-        $this->call('vendor:publish', ['--force' => true , '--provider' => SiteGenServiceProvider::class ] );
+        $this->info('Creating an additional database settings in .env');
+
+
+        $env_config = $filesystem->get(base_path('.env'));
+
+        if (false === strpos($env_config, "DB_CONNECTION=mysql_sitegen")) {
+
+            $env_array = explode( PHP_EOL , $env_config );
+
+            $write_flag = false;
+
+            foreach( $env_array as $row ){
+
+                if ( $row == "DB_CONNECTION=mysql" ) {
+
+                    $write_flag = true;
+
+                }
+
+                if ( $write_flag == true && $row == "" ){
+
+                    $filesystem->append(
+                        base_path('.env_tmp'),
+                        "\nDB_CONNECTION=mysql_sitegen
+DB_SITEGEN_HOST=127.0.0.1
+DB_SITEGEN_PORT=3306
+DB_SITEGEN_DATABASE=dbSiteGen
+DB_SITEGEN_USERNAME=nobody
+DB_SITEGEN_PASSWORD=password\n\n"
+                    );
+
+                    $write_flag = false;
+
+                } else {
+
+                    $filesystem->append(
+                        base_path('.env_tmp'),
+                        $row.PHP_EOL
+                    );
+
+                }
+
+            }
+
+            $filesystem->delete(base_path('.env'));
+            $filesystem->copy(base_path('.env_tmp'),base_path('.env'));
+            $filesystem->delete(base_path('.env_tmp'));
+
+            $this->info('.env file updated successfully!');
+
+        } else {
+
+            $this->info('.env already configured!');
+
+        }
+
         $this->info('Successfully installed SiteGen! Enjoy');
     }
 }

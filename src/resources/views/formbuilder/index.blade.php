@@ -13,25 +13,160 @@
     </div>
     <div class="flex-bottom">
       <div class="left-panel">
-
+        <div id="form-layout" class="responsive desktop"></div>
       </div>
       <div class="right-panel">
-        <div class="div-block">
+        <div class="menu-container">
           <h4 class="left-panel-menu-title">Form Objects</h4>
-          <a href="#" class="button w-button">Panel</a>
-          <a href="#" class="button w-button">form container</a>
-          <a href="#" class="button w-button">Fieldset</a>
-          <a href="#" class="button w-button">Group</a>
-          <a href="#" class="button w-button">Text</a>
-          <a href="#" class="button w-button">Text Area</a>
-          <a href="#" class="button w-button">Submit</a>
-          <a href="#" class="button w-button">Button</a>
-          <a href="#" class="button w-button">Select box</a>
-          <a href="#" class="button w-button">List box</a>
-          <a href="#" class="button w-button">Radio Button</a>
-          <a href="#" class="button w-button">Checkbox</a>
+          <a href="#" id="add-panel" class="button w-button">Panel</a>
+          <a href="#" id="add-form-container" class="button w-button">form container</a>
+          <a href="#" id="add-fieldset" class="button w-button">Fieldset</a>
+          <a href="#" id="add-legend" class="button w-button">Legend</a>
+          <a href="#" id="add-text" class="button w-button">Text</a>
+          <a href="#" id="add-textarea" class="button w-button">Text Area</a>
+          <a href="#" id="add-submit-button" class="button w-button">Submit</a>
+          <a href="#" id="add-button" class="button w-button">Button</a>
+          <a href="#" id="add-selectbox" class="button w-button">Select box</a>
+          <a href="#" id="add-listbox" class="button w-button">List box</a>
+          <a href="#" id="add-radio-button" class="button w-button">Radio Button</a>
+          <a href="#" id="add-checkbox" class="button w-button">Checkbox</a>
         </div>
       </div>
     </div>
   </div>
+  <script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
+  <script>
+      $('document').ready(function(){
+
+        var formitemstart = '<div class="form-designer-editor-line">'+
+                            '<div class="form-designer-panel-top">'+
+                            '<div class="form-designer-panel-name">Name</div>'+
+                            '</div>'+
+                            '<div class="form-designer-panel-bottom">';
+
+        var formitemend =   '</div></div>';
+
+        $('#add-panel').click( function() {
+
+            var htmldata =  '<div class="panel panel-default">' +
+                            '<div class="panel-heading">Panel Heading</div>' +
+                            '<div class="panel-body">Panel Content</div>' +
+                            '</div>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+        });
+
+        $('#add-form-container').click( function() {
+
+            var htmldata =  '<form action="#">' +
+                            '</form>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+        });
+
+        $('#add-fieldset').click( function() {
+
+            var htmldata =  '<fieldset>' +
+                            '</fieldset>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+        });
+
+        $('#add-legend').click( function() {
+
+            var htmldata =  '<legend>' +
+                            '</legend>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+        });
+
+
+        $('#add-text').click( function() {
+
+            var htmldata =  '<input type="text">';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-textarea').click( function() {
+
+            var htmldata =  '<textarea>' +
+                            '</textarea>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-submit-button').click( function() {
+
+            var htmldata =  '<input type="submit">';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-button').click( function() {
+
+            var htmldata =  '<input type="button">';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-selectbox').click( function() {
+
+            var htmldata =  '<select>' +
+                            '<option value="1">1</option>' +
+                            '<option value="2">2</option>' +
+                            '<option value="3">3</option>' +
+                            '</select>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-listbox').click( function() {
+
+            var htmldata =  '<select size="5">' +
+                            '<option value="1">1</option>' +
+                            '<option value="2">2</option>' +
+                            '<option value="3">3</option>' +
+                            '</select>';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-radio-button').click( function() {
+
+            var htmldata =  '<input type="radio">';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+        $('#add-checkbox').click( function() {
+
+            var htmldata =  '<input type="checkbox">';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+
+
+        });
+
+
+      });
+  </script>
 @endsection
