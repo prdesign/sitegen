@@ -216,3 +216,148 @@
     color: #fff;
     font-size: 10px;
   }
+
+  .icons {
+    height: 40px;
+    font-family: 'Fa solid 900', sans-serif;
+  }
+
+  .action-icons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 110px;
+    height: 22px;
+    padding-top: 1px;
+    float: none;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-family: 'Fa solid 900', sans-serif;
+    color: #fff;
+  }
+
+  .text-block {
+    display: inline-block;
+    width: 20px;
+    font-family: 'Fa solid 900', sans-serif;
+    text-align: center;
+  }
+
+  .text-block-2 {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+
+  .bold-text {
+    width: 18px;
+    font-weight: 400;
+  }
+
+  .text-block-3 {
+    display: inline-block;
+    width: 20px;
+    font-family: 'Fa solid 900', sans-serif;
+    text-align: center;
+  }
+
+  .text-block-4 {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+
+  .bold-text-2 {
+    font-weight: 400;
+  }
+
+  .bold-text-3 {
+    font-weight: 400;
+  }
+
+  .bold-text-4 {
+    font-weight: 400;
+  }
+
+  .text-block-5 {
+    display: inline-block;
+    width: 24px;
+    color: #a70000;
+    text-align: center;
+  }
+
+  .form-designer-title-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 22px;
+  }
+
+  .form-designer-title-column-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 0.33333333%;
+    height: 22px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  .div-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .form-designer-title-column-1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  .form-designer-title-column3 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  .form-designer-panel-type {
+    height: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    font-size: 10px;
+  }
+
+  @font-face {
+    font-family: 'Fa solid 900';
+    src: url('../fonts/fa-solid-900.woff2') format('woff2'), url('../fonts/fa-solid-900.eot') format('embedded-opentype'), url('../fonts/fa-solid-900.woff') format('woff'), url('../fonts/fa-solid-900.ttf') format('truetype'), url('../fonts/fa-solid-900.svg') format('svg');
+    font-weight: 400;
+    font-style: normal;
+  }

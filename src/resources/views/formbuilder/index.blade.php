@@ -18,6 +18,8 @@
       <div class="right-panel">
         <div class="menu-container">
           <h4 class="left-panel-menu-title">Form Objects</h4>
+          <a href="#" id="add-container" class="button w-button">Container</a>
+          <a href="#" id="add-column" class="button w-button">Column</a>
           <a href="#" id="add-panel" class="button w-button">Panel</a>
           <a href="#" id="add-form-container" class="button w-button">form container</a>
           <a href="#" id="add-fieldset" class="button w-button">Fieldset</a>
@@ -36,15 +38,70 @@
   </div>
   <script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
   <script>
-      $('document').ready(function(){
+
+    intCounter = 0;
+
+    $('document').ready(function(){
+
+
 
         var formitemstart = '<div class="form-designer-editor-line">'+
                             '<div class="form-designer-panel-top">'+
+                            '<div class="form-designer-title-row">'+
+                            '<div class="form-designer-title-column-1">'+
                             '<div class="form-designer-panel-name">Name</div>'+
+                            '</div>'+
+                            '<div class="form-designer-title-column-2">'+
+                            '<div class="form-designer-panel-type">Type = #</div>'+
+                            '</div>'+
+                            '<div class="form-designer-title-column3">'+
+                            '<div class="action-icons">'+
+                            '<div class="text-block-5"><strong></strong></div>'+
+                            '<div class="text-block-4"><strong class="bold-text-4"></strong></div>'+
+                            '<div class="text-block"><strong class="bold-text"></strong></div>'+
+                            '<div class="text-block-3"><strong class="bold-text-2"></strong></div>'+
+                            '<div class="text-block-2"><strong class="bold-text-3"> </strong></div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
                             '</div>'+
                             '<div class="form-designer-panel-bottom">';
 
+
         var formitemend =   '</div></div>';
+
+
+
+        $('#add-container').click( function() {
+
+            var htmldata =  '';
+            intCounter++;
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+            $('.form-designer-panel-name').html("Name : Container");
+            $('.form-designer-panel-type').html("Type = Container");
+
+            $('.form-designer-panel-bottom').attr('data-idx' , intCounter );
+
+
+            $('.form-designer-editor-line').hover( function() {
+                $('.form-designer-panel-bottom', this).css( "background-color" , "#ddaabb" );
+            }, function() {
+                $('.form-designer-panel-bottom', this).removeAttr("style");
+            });
+
+        });
+
+        $('#add-column').click( function() {
+
+            var htmldata =  '';
+
+            $('#form-layout').append( formitemstart + htmldata + formitemend );
+            $('.form-designer-panel-name').html("Name : Column");
+            $('.form-designer-panel-type').html("Type = Column");
+
+        });
+
 
         $('#add-panel').click( function() {
 
@@ -54,6 +111,8 @@
                             '</div>';
 
             $('#form-layout').append( formitemstart + htmldata + formitemend );
+            $('.form-designer-panel-name').html("Name : Panel");
+            $('.form-designer-panel-type').html("Type = Panel");
 
         });
 
@@ -167,6 +226,6 @@
         });
 
 
-      });
+    });
   </script>
 @endsection
