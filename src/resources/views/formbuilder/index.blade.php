@@ -70,8 +70,6 @@
 
         var formitemend =   '</div></div>';
 
-        //test
-
         $('#add-container').click( function() {
 
             var htmldata =  '';
