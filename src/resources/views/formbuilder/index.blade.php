@@ -70,8 +70,6 @@
 
         var formitemend =   '</div></div>'; 
 
-            // Test remark added to file for testing
-
         $('#add-container').click( function() {
 
             var htmldata =  '';
