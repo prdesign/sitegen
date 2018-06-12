@@ -68,7 +68,7 @@
                             '<div class="form-designer-panel-bottom">';
 
 
-        var formitemend =   '</div></div>';
+        var formitemend =   '</div></div>'; 
 
         $('#add-container').click( function() {
 
