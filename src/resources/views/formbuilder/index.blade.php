@@ -39,6 +39,8 @@
   <script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
   <script>
 
+    // Lets start building the form builder javacsript manager
+
     intCounter = 0;
 
     $('document').ready(function(){
