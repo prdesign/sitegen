@@ -86,7 +86,7 @@
 
 
             $('.form-designer-editor-line').hover( function() {
-                $('.form-designer-panel-bottom', this).css( "background-color" , "#ddaabb" );
+                $('.form-designer-panel-bottom', this).css( "background-color" , "#f0befa" );
             }, function() {
                 $('.form-designer-panel-bottom', this).removeAttr("style");
             });
