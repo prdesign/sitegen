@@ -13,12 +13,12 @@
     </div>
     <div class="flex-bottom">
       <div class="left-panel">
-        <div id="form-layout" class="responsive desktop"></div>
+        <div id="form-layout" class="responsive desktop" data-idx="1"></div>
       </div>
       <div class="right-panel">
         <div class="menu-container">
           <h4 class="left-panel-menu-title">Form Objects</h4>
-          <a href="#" id="add-container" class="button w-button">Container</a>
+          <a href="#" id="add-row" class="button w-button">Row</a>
           <a href="#" id="add-column" class="button w-button">Column</a>
           <a href="#" id="add-panel" class="button w-button">Panel</a>
           <a href="#" id="add-form-container" class="button w-button">form container</a>
@@ -42,11 +42,100 @@
 
     // Lets start building the form builder javacsript manager
 
-    intCounter = 0;
+
+
+    var DOMManager = {
+
+        intIndex : 0,
+        intParent : 0,
+        intTagIndex : 0,
+        nodes : [],
+
+        getIndex : function (){
+
+            this.intIndex ++;
+
+            return this.intIndex;
+
+        },
+
+        getParent : function (){
+
+            this.intParent ++;
+
+            return this.intParent;
+
+        },
+
+
+        getTagIndex : function (){
+
+            this.intTagIndex ++;
+
+            return this.intTagIndex;
+
+        },
+
+        init : function(){
+
+            this.createNode ({
+                'id' : this.getIndex(),
+                'parent' : null,
+                'name' : 'wrapper'
+            });
+
+            this.getParent();
+
+        },
+
+        currentParent : function (){
+            return this.intParent;
+        },
+
+        selectedItem : function ( index ){
+            console.log( index );
+        },
+
+        createNode : function ( data , tagParent = null ) {
+
+                this.nodes.push ( data );
+
+        }
+
+
+    };
 
     $('document').ready(function(){
 
+        function editorHTML( name , type , p , i ){
 
+            return  '<div class="form-designer-editor-line">'+
+                    '<div class="form-designer-panel-top">'+
+                    '<div class="form-designer-title-row">'+
+                    '<div class="form-designer-title-column-1">'+
+                    '<div class="form-designer-panel-name">' + name + '</div>'+
+                    '</div>'+
+                    '<div class="form-designer-title-column-2">'+
+                    '<div class="form-designer-panel-type">Type = ' + type + '</div>'+
+                    '</div>'+
+                    '<div class="form-designer-title-column3">'+
+                    '<div class="action-icons">'+
+                    '<div class="text-block-5"><strong></strong></div>'+
+                    '<div class="text-block-4"><strong class="bold-text-4"></strong></div>'+
+                    '<div class="text-block"><strong class="bold-text"></strong></div>'+
+                    '<div class="text-block-3"><strong class="bold-text-2"></strong></div>'+
+                    '<div class="text-block-2"><strong class="bold-text-3"> </strong></div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-designer-panel-bottom" data-parent="' + p + '" data-idx="' + i + '">'+
+                    '</div>'+
+                    '</div>';
+
+        };
+
+        DOMManager.init();
 
         var formitemstart = '<div class="form-designer-editor-line">'+
                             '<div class="form-designer-panel-top">'+
@@ -71,33 +160,42 @@
                             '<div class="form-designer-panel-bottom">';
 
 
-        var formitemend =   '</div></div>'; 
+        var formitemend =   '</div></div>';
 
-        $('#add-container').click( function() {
+        $('#add-row').click( function() {
 
-            var htmldata =  '';
-            intCounter++;
+            DOMManager.createNode({
+                'id' : DOMManager.getIndex(),
+                'parent' : DOMManager.currentParent(),
+                'name' : 'container'
+            });
 
-            $('#form-layout').append( formitemstart + htmldata + formitemend );
-            $('.form-designer-panel-name').html("Name : Container");
-            $('.form-designer-panel-type').html("Type = Container");
-
-            $('.form-designer-panel-bottom').attr('data-idx' , intCounter );
-
+            $('#form-layout').append( editorHTML( 'Row' , 'Row' , DOMManager.currentParent() , DOMManager.intIndex ));
 
             $('.form-designer-editor-line').hover( function() {
-                $('.form-designer-panel-bottom', this).css( "background-color" , "#f0befa" );
+                $('.form-designer-panel-bottom', this).css( "border" , "solid" ).css('border-width' , '1px');
             }, function() {
                 $('.form-designer-panel-bottom', this).removeAttr("style");
             });
+
+            $('.form-designer-panel-bottom', this).css( "background-color" , "#eeeeee" );
+            $('.form-designer-panel-bottom').click( function(){
+                DOMManager.selectedItem($(this).data('idx'));
+                $(this).css( "background-color" , "#aaaaaa" );
+            });
+
 
         });
 
         $('#add-column').click( function() {
 
-            var htmldata =  '';
+            DOMManager.createNode({
+                'id' : DOMManager.getIndex(),
+                'parent' : DOMManager.currentParent(),
+                'name' : 'column'
+            });
 
-            $('#form-layout').append( formitemstart + htmldata + formitemend );
+            $('#form-layout').append( formitemstart + formitemend );
             $('.form-designer-panel-name').html("Name : Column");
             $('.form-designer-panel-type').html("Type = Column");
 
