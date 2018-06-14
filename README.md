@@ -2,7 +2,7 @@
 
 An package designed to help build web sites quickly with Laravel. 
 
-## Instalation
+## Installation
 
 Run the Composer require command from the terminal:
 
