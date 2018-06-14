@@ -47,8 +47,9 @@
     var DOMManager = {
 
         intIndex : 0,
-        intParent : 0,
+        intParent : 1,
         intTagIndex : 0,
+        currentElement : null,
         nodes : [],
 
         getIndex : function (){
@@ -60,8 +61,6 @@
         },
 
         getParent : function (){
-
-            this.intParent ++;
 
             return this.intParent;
 
@@ -93,7 +92,7 @@
         },
 
         selectedItem : function ( index ){
-            console.log( index );
+            this.intParent = index;
         },
 
         createNode : function ( data , tagParent = null ) {
@@ -107,9 +106,9 @@
 
     $('document').ready(function(){
 
-        function editorHTML( name , type , p , i ){
+        function editorHTML( name , type , p , i , strClass = '' ){
 
-            return  '<div class="form-designer-editor-line">'+
+            return  '<div class="form-designer-editor-line ' + strClass + '">'+
                     '<div class="form-designer-panel-top">'+
                     '<div class="form-designer-title-row">'+
                     '<div class="form-designer-title-column-1">'+
@@ -129,7 +128,7 @@
                     '</div>'+
                     '</div>'+
                     '</div>'+
-                    '<div class="form-designer-panel-bottom" data-parent="' + p + '" data-idx="' + i + '">'+
+                    '<div id="' + i + '" class="form-designer-panel-bottom" data-parent="' + p + '">'+
                     '</div>'+
                     '</div>';
 
@@ -172,16 +171,19 @@
 
             $('#form-layout').append( editorHTML( 'Row' , 'Row' , DOMManager.currentParent() , DOMManager.intIndex ));
 
+            $('#' + DOMManager.intIndex).addClass('flex');
+
             $('.form-designer-editor-line').hover( function() {
-                $('.form-designer-panel-bottom', this).css( "border" , "solid" ).css('border-width' , '1px');
+                $( this ).addClass('hover-item');
             }, function() {
-                $('.form-designer-panel-bottom', this).removeAttr("style");
+                $( this ).removeClass('hover-item');
             });
 
             $('.form-designer-panel-bottom', this).css( "background-color" , "#eeeeee" );
             $('.form-designer-panel-bottom').click( function(){
-                DOMManager.selectedItem($(this).data('idx'));
-                $(this).css( "background-color" , "#aaaaaa" );
+                $('.form-designer-panel-bottom').removeClass('selected');
+                DOMManager.selectedItem($(this).attr('id'));
+                $(this).addClass('selected');
             });
 
 
@@ -195,9 +197,20 @@
                 'name' : 'column'
             });
 
-            $('#form-layout').append( formitemstart + formitemend );
-            $('.form-designer-panel-name').html("Name : Column");
-            $('.form-designer-panel-type').html("Type = Column");
+            $('#' + DOMManager.currentParent()).append( editorHTML( 'Column' , 'Column' , DOMManager.currentParent() , DOMManager.intIndex  , 'flex-column' ));
+
+            $('.form-designer-editor-line').hover( function() {
+                $( this ).addClass('hover-item');
+            }, function() {
+                $( this ).removeClass('hover-item');
+            });
+
+            $('.form-designer-panel-bottom', this).css( "background-color" , "#eeeeee" );
+            $('.form-designer-panel-bottom').click( function(){
+                $('.form-designer-panel-bottom').removeClass('selected');
+                DOMManager.selectedItem($(this).attr('id'));
+                $(this).addClass('selected');
+            });
 
         });
 

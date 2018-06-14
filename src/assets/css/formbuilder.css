@@ -56,6 +56,14 @@
     flex: 1;
   }
 
+  .selected {
+      background-color: #d6d6d6;
+  }
+
+  .hover-item{
+    box-shadow: 0 3px 6px 0 #000;
+  }
+
   .title {
     padding-top: 6px;
     font-family: 'Open Sans', sans-serif;
@@ -190,11 +198,25 @@
     margin-left: 6px;
   }
 
+  .form-designer-editor-line.flex-column {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
   .form-designer-panel-top {
     height: 22px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     background-color: rgba(0, 152, 255, .6);
+  }
+
+  .form-designer-panel-bottom.flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 
   .form-designer-panel-bottom {
@@ -353,6 +375,7 @@
     font-family: 'Open Sans', sans-serif;
     color: #fff;
     font-size: 10px;
+    overflow: hidden;
   }
 
   @font-face {
