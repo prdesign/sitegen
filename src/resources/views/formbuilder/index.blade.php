@@ -13,7 +13,7 @@
     </div>
     <div class="flex-bottom">
       <div class="left-panel">
-        <div id="form-layout" class="responsive desktop" data-idx="1"></div>
+        <div id="0" class="responsive desktop"></div>
       </div>
       <div class="right-panel">
         <div class="menu-container">
@@ -38,6 +38,7 @@
   </div>
 <script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/js/domEditor.js')}}"></script>
 <script>
 
     // Lets start building the form builder javacsript manager
@@ -169,7 +170,7 @@
                 'name' : 'container'
             });
 
-            $('#form-layout').append( editorHTML( 'Row' , 'Row' , DOMManager.currentParent() , DOMManager.intIndex ));
+            $('#0').append( editorHTML( 'Row' , 'Row' , DOMManager.currentParent() , DOMManager.intIndex ));
 
             $('#' + DOMManager.intIndex).addClass('flex');
 
