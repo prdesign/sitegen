@@ -16,7 +16,7 @@ class SitegenCreateStylePropertyTable extends Migration
         Schema::connection('mysql_sitegen')->create('style_properties', function (Blueprint $table) {
             $table->string('key');
             $table->string('value');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
     }
 

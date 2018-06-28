@@ -14,8 +14,8 @@ class SitegenCreateStyleRuleTable extends Migration
     public function up()
     {
         Schema::connection('mysql_sitegen')->create('style_rules', function (Blueprint $table) {
-            $table->string('name')->index();
-            $table->timestamp('created_at')->nullable();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
