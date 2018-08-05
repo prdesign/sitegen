@@ -25,3 +25,4 @@ And optionally add a new line to the `aliases` array:
 	'SiteGen' => PRDesign\SiteGen\Facades\SiteGenFacade::class,
 
 Now you're ready to start using the Site Generator in your application.
+
