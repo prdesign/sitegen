@@ -40,7 +40,7 @@ Route::prefix('sitegen')->group( function(){
 
     // Form Builder Routes
 
-    Route::get('formbuilder' , $namespacePrefix . 'SiteGenFormBuilderController@index')->name('sitegen.formbuilder.browse');
+    Route::get('formbuilder' , $namespacePrefix . 'SiteGenFormBuilderController@index')->name('sitegen.formbuilder.index');
 
     // Site Wizard Routes
 
@@ -53,6 +53,10 @@ Route::prefix('sitegen')->group( function(){
     Route::get('pages/edit/{slug}' , $namespacePrefix . 'SiteGenPageController@edit')->name('sitegen.page.edit');
     Route::get('pages/add/{slug}' , $namespacePrefix . 'SiteGenPageController@add')->name('sitegen.page.add');
     Route::get('pages/delete/{slug}' , $namespacePrefix . 'SiteGenPageController@delete')->name('sitegen.page.delete');
+
+    // Site Settings Routes
+
+    Route::get('settings' , $namespacePrefix . 'SiteGenSettingController@index')->name('sitegen.setting.browse');
 
 
 });
