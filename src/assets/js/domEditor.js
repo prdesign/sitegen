@@ -91,6 +91,8 @@ $('document').ready(function(){
 
                 this.nodes.push ( node );
 
+                //Todo: return the current array index of this added node
+
             }
         },
 
